@@ -6,7 +6,13 @@ import Link from 'next/link'
 const name = 'suzy'
 export const siteTitle = 'Next.js Sample Website'
 
-export default function Layout({ children, home }) {
+export default function Layout({
+  children,
+  home
+}: {
+  children: React.ReactNode
+  home?: boolean
+}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -25,7 +31,8 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        {home ? (
+        {home ? ( // 三項演算子
+          // homeの場合
           <>
             <img
               src="/images/profile.jpg"
@@ -35,6 +42,7 @@ export default function Layout({ children, home }) {
             <h1 className={utilStyles.heading2Xl}>{name}</h1>
           </>
         ) : (
+          // home以外の場合
           <>
             <Link href="/">
               <a>
